@@ -1,0 +1,16 @@
+apiVersion: v1
+entries:
+  threshold:
+  - apiVersion: v1
+    appVersion: "1.0"
+    created: 2019-01-03T14:16:54.799238Z
+    description: Threshold API Gateway - Automatic protection and acceleration for
+      Kubernetes services.
+    digest: 8aeb6476ae2827cf33fd1eb04a0b4e993f0c10fcfd813d71a9b95d9a6034815c
+    home: https://www.threshold.cloud
+    icon: https://avatars3.githubusercontent.com/u/46301420
+    name: threshold
+    urls:
+    - packaged/threshold-0.1.0.tgz
+    version: 0.1.0
+generated: 2019-01-03T14:16:54.798835Z
