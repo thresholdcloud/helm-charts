@@ -58,22 +58,22 @@ spec:
               mountPath: /opt/kamara/apis
 
           resources:
-            {{- toYaml .Values.resources | nindent 12 }}
+            {{- toYaml .Values.gateway.resources | nindent 12 }}
 
       volumes:
         - name: api-volume
           configMap: # Note: the threshold-apis ConfigMap is auto-created if using threshold-controller
             name: threshold-apis
 
-      {{- with .Values.nodeSelector }}
+      {{- with .Values.gateway.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-    {{- with .Values.affinity }}
+    {{- with .Values.gateway.affinity }}
       affinity:
         {{- toYaml . | nindent 8 }}
     {{- end }}
-    {{- with .Values.tolerations }}
+    {{- with .Values.gateway.tolerations }}
       tolerations:
         {{- toYaml . | nindent 8 }}
     {{- end }}

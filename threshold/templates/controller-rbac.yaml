@@ -1,0 +1,33 @@
+{{- if .Values.controller.enabled -}}
+# ServiceAccount used by the controller
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: {{ include "threshold.fullname" . }}-controller
+  labels:
+    app.kubernetes.io/name: {{ include "threshold.name" . }}
+    helm.sh/chart: {{ include "threshold.chart" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/component: controller
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+---
+# Permits the controller to edit the Threshold ConfigMap object
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRoleBinding
+metadata:
+  name: threshold-controller-cluster-edit
+  labels:
+    app.kubernetes.io/name: {{ include "threshold.name" . }}
+    helm.sh/chart: {{ include "threshold.chart" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/component: controller
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+subjects:
+- kind: ServiceAccount
+  namespace: default
+  name: {{ include "threshold.fullname" . }}-controller
+roleRef:
+  kind: ClusterRole
+  name: edit
+  apiGroup: rbac.authorization.k8s.io
+{{- end -}}

@@ -1,5 +1,7 @@
 apiVersion: v1
 appVersion: "1.0"
-description: "Threshold API Gateway (https://www.threshold.cloud)"
+description: Threshold API Gateway - Automatic protection and acceleration for Kubernetes services.
 name: threshold
 version: 0.1.0
+icon: https://avatars3.githubusercontent.com/u/46301420
+home: https://www.threshold.cloud
