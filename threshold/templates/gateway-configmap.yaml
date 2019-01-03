@@ -1,0 +1,12 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: {{ include "threshold.fullname" . }}-apis
+  labels:
+    app.kubernetes.io/name: {{ include "threshold.name" . }}
+    helm.sh/chart: {{ include "threshold.chart" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+    app.kubernetes.io/component: apis
+data:
+  {{- toYaml .Values.staticApis | nindent 2 }}

@@ -62,8 +62,8 @@ spec:
 
       volumes:
         - name: api-volume
-          configMap: # Note: the threshold-apis ConfigMap is auto-created if using threshold-controller
-            name: threshold-apis
+          configMap: # Note: the APIs ConfigMap can be automatically created and managed if using threshold-controller
+            name: {{ include "threshold.fullname" . }}-apis
 
       {{- with .Values.gateway.nodeSelector }}
       nodeSelector:

@@ -33,6 +33,12 @@ spec:
             # This variable must match the name of the gateway Deployment object
           - name: DEPLOYMENT_NAME
             value: {{ include "threshold.fullname" . }}-gateway
+          - name: CONFIGMAP_NAME
+            value: {{ include "threshold.fullname" . }}-apis
+          - name: NAMESPACE
+            value: "{{ .Values.controller.namespace }}"
+          - name: POLL_FREQUENCY
+            value: "{{ .Values.controller.pollFrequency }}"
 
           resources:
             {{- toYaml .Values.controller.resources | nindent 12 }}

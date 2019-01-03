@@ -5,6 +5,25 @@
 nameOverride: ""
 fullnameOverride: ""
 
+# Static API configurations.
+# Note: if you want to use threshold-controller, you don't have to configure any static APIs.
+# For more examples see https://www.threshold.cloud/docs
+staticApis: {}
+# This creates an example API for the backend 'example.com', with content cached for 60 seconds.
+# To use this, uncomment the lines below and remove the curly braces after 'staticApis' above.
+#
+#  example.kts: |
+#    import kamara.dsl.*
+#    apis {
+#      api("example") {
+#        version = "1.0"
+#        backend = "http://example.com"
+#        policies {
+#          cache duration 60.seconds
+#        }
+#      }
+#    }
+
 gateway:
   replicaCount: 1
   image:
@@ -27,6 +46,12 @@ gateway:
 controller:
   # Determines whether the controller and its supporting objects are deployed
   enabled: true
+
+  # The namespace containing the ConfigMap and gateway Deployment
+  namespace: default
+
+  # How often (in seconds) the controller should check for annotated Services
+  pollFrequency: 60
 
   image:
     repository: threshold/controller
