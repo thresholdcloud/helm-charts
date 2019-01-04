@@ -66,6 +66,9 @@ spec:
             - name: api-volume
               mountPath: /opt/kamara/apis
 
+            - name: script-volume
+              mountPath: /opt/kamara/scripts
+
             {{- if and .Values.license.key .Values.license.email }}
             - name: license-volume
               mountPath: /opt/kamara/license
@@ -78,6 +81,10 @@ spec:
         - name: api-volume
           configMap: # Note: the APIs ConfigMap can be automatically created and managed if using threshold-controller
             name: {{ include "threshold.fullname" . }}-apis
+
+        - name: script-volume
+          configMap:
+            name: {{ include "threshold.fullname" . }}-scripts
 
         {{- if and .Values.license.key .Values.license.email }}
         - name: license-volume

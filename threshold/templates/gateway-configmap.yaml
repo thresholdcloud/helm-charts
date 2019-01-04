@@ -11,6 +11,13 @@ metadata:
 data:
   {{- toYaml .Values.staticApis | nindent 2 }}
 ---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: {{ include "threshold.fullname" . }}-scripts
+data:
+  {{- toYaml .Values.scripts | nindent 2 }}
+---
 {{- if and .Values.license.key .Values.license.email -}}
 kind: ConfigMap
 apiVersion: v1

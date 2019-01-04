@@ -89,6 +89,20 @@ ingress:
   #    hosts:
   #      - threshold-example.local
 
+# Custom policy scripts, to which you can refer in your policies.
+# For more examples see https://www.threshold.cloud/docs
+scripts: {}
+# This adds a script that replaces any empty response body with an empty JSON object.
+# To use this, uncomment the lines below and remove the curly braces after 'scripts' above.
+# Then add a policy like this: script file "/opt/kamara/scripts/response.js"
+#
+#  response.js: |
+#    // ensure every empty response body is replaced with an empty JSON object
+#    if (!response.body || response.body.length === 0) {
+#      logger.info('Returning empty JSON object for empty response body from: ' + url);
+#      response.body = '{}';
+#    }
+
 # If you have a license key, you enter it here, along with the matching
 # email address for which it was created.
 license:
