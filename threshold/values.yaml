@@ -74,6 +74,7 @@ service:
   # Change to ClusterIP if using Ingress
   type: LoadBalancer
   port: 80
+  annotations: {}
 
 ingress:
   enabled: false
