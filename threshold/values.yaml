@@ -88,3 +88,9 @@ ingress:
   #  - secretName: threshold-example-tls
   #    hosts:
   #      - threshold-example.local
+
+# If you have a license key, you enter it here, along with the matching
+# email address for which it was created.
+license:
+  key: ""
+  email: ""
